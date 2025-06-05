@@ -1,103 +1,228 @@
-import Image from "next/image";
+"use client";
+import { useState } from "react";
+import { motion } from "motion/react";
+// import { backgroundStyles } from "./layout";
+import { BentoGrid, BentoGridItem } from "@/components/bento";
+import {
+  IconArrowWaveRightUp,
+  IconBoxAlignRightFilled,
+  IconBoxAlignTopLeft,
+  IconClipboardCopy,
+  IconFileBroken,
+  IconSignature,
+  IconTableColumn,
+} from "@tabler/icons-react";
+import LayoutGridDemo from "@/components/Grid/layoutdemo";
+import { WobbleCardDemo } from "@/components/Woble/demo";
+import Test from "./apple/page";
+import Applications from "@/components/Applications/apps";
+import About from "@/components/About/About";
+
+const menuItems = [
+  { id: "Applications", label: "Applications" },
+  { id: "Writing", label: "Writing" },
+  { id: "About", label: "About" },
+];
+
+const social = [
+  { icon: "githubblye.png", url: "" },
+  { icon: "linkedin.png", url: "" },
+  { icon: "mail.png", url: "" },
+  { icon: "cv.png", url: "" },
+];
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [activeItem, setActiveItem] = useState("Applications");
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  // Function to render content based on active item
+  const renderContent = () => {
+    switch (activeItem) {
+      case "Applications":
+        return <Applications />;
+      case "Writing":
+        return (
+          <BentoGrid className="max-w-4xl mx-auto md:grid borderd w-full pr-10">
+            {items.map((item, i) => (
+              <BentoGridItem
+                key={i}
+                title={item.title}
+                description={item.car_description}
+                modal_description={item.modal_description}
+                header={item.header}
+                icon={item.icon}
+                className={i === 3 || i === 6 ? "md:col-span-2" : ""}
+              />
+            ))}
+          </BentoGrid>
+        );
+      case "About":
+        return <About />;
+      default:
+        return <WobbleCardDemo />;
+    }
+  };
+
+  return (
+    <div
+      className="flex flex-col md:flex-row min-w-screen h-screen"
+      // style={backgroundStyles}
+    >
+      {/* Sidebar that scrolls with the page */}
+      <div className="ml-[10%] mt-[9%] lg:flex-[40%]">
+        <div className="text">
+          <div className="flex flex-row gap-2">
+            <div className="text-sm inline-flex border border-[#222]/10 px-3 py-1 rounded-lg">
+              SwiftUI
+            </div>
+            <div className="text-sm inline-flex border border-[#222]/10 px-3 py-1 rounded-lg">
+              React
+            </div>
+            <div className="text-sm inline-flex border border-[#222]/10 px-3 py-1 rounded-lg">
+              Full Stack
+            </div>
+          </div>
+
+          <h1 className="relative text-5xl font-bold my-5 py-1">
+            <span className="bg-gradient-to-r from-black to-[#001E80] bg-clip-text text-transparent">
+              Khánh Nguyễn
+            </span>
+          </h1>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        <div className="mt-[5%] ">
+          <nav className="space-y-4">
+            {menuItems.map((item) => (
+              <div
+                key={item.id}
+                className="flex items-center gap-6 cursor-pointer group"
+                onClick={() => setActiveItem(item.id)}
+              >
+                <motion.div
+                  className={"w-[1px] h-[1.5px] rounded-2xl"}
+                  initial={false}
+                  animate={{
+                    width: activeItem === item.id ? 70 : 40,
+                    backgroundColor:
+                      activeItem === item.id ? "#020617" : "#6b7280",
+                  }}
+                  transition={{ duration: 0.1 }}
+                />
+
+                <motion.span
+                  className={"text-sm font-medium tracking-wider"}
+                  initial={false}
+                  animate={{
+                    color: activeItem === item.id ? "#020617" : "#9ca3af",
+                  }}
+                  transition={{ duration: 0.1 }}
+                >
+                  {item.label}
+                </motion.span>
+              </div>
+            ))}
+          </nav>
+        </div>
+        <div className="mt-10 flex flex-row gap-5 cursor-pointer">
+          {social.map((item, index) => (
+            <img
+              key={index}
+              src={item.icon}
+              className="w-[25px] transform transition-transform duration-300 ease-in-out hover:scale-125 hover:-translate-y-1"
+              onClick={() => window.open(item.url, "_blank")} // Opens URL in a new tab
+            />
+          ))}
+        </div>
+      </div>
+      <div className="content ml-5 flex pl-3 mt-[9%] lg:flex-[60%] lg:w-full pb-10  ">
+        <motion.div
+          key={activeItem}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.3 }}
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          {renderContent()}
+        </motion.div>
+      </div>
     </div>
   );
 }
+
+const Skeleton = () => (
+  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl overflow-hidden">
+    <img
+      src="./test4.png"
+      className="w-full h-full rounded-xl object-[center_35%] object-cover"
+    />
+  </div>
+);
+
+const DummyContent = () => {
+  return (
+    <>
+      {[...new Array(3).fill(1)].map((_, index) => {
+        return (
+          <div
+            key={"dummy-content" + index}
+            className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4"
+          >
+            <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-2xl font-sans max-w-3xl mx-auto">
+              <span className="font-bold text-neutral-700 dark:text-neutral-200">
+                The first rule of Apple club is that you boast about Apple club.
+              </span>{" "}
+              Keep a journal, quickly jot down a grocery list, and take amazing
+              class notes. Want to convert those notes to text? No problem.
+              Langotiya jeetu ka mara hua yaar is ready to capture every
+              thought.
+            </p>
+            <img
+              src="https://assets.aceternity.com/macbook.png"
+              alt="Macbook mockup from Aceternity UI"
+              height="500"
+              width="500"
+              className="md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain"
+            />
+          </div>
+        );
+      })}
+    </>
+  );
+};
+const items = [
+  {
+    title: "How I coded MyTennisApp",
+    car_description:
+      "Explore the birth of groundbreaking ideas and inventions.",
+    header: <Skeleton />,
+    icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
+    modal_description: <DummyContent />,
+  },
+  {
+    title: "TennisNumbers",
+    car_description: "Dive into the transformative power of technology.",
+    header: <Skeleton />,
+    icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
+    modal_description: <DummyContent />,
+  },
+  {
+    title: "SwiftUI vs React Native",
+    car_description: "Discover the beauty of thoughtful and functional design.",
+    header: <Skeleton />,
+    icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
+    modal_description: <DummyContent />,
+  },
+  {
+    title: "The Power of Communication",
+    car_description:
+      "Understand the impact of effective communication in our lives.",
+    header: <Skeleton />,
+    icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
+    modal_description: <DummyContent />,
+  },
+  {
+    title: "The Pursuit of Knowledge",
+    car_description: "Join the quest for understanding and enlightenment.",
+    header: <Skeleton />,
+    icon: <IconArrowWaveRightUp className="h-4 w-4 text-neutral-500" />,
+    modal_description: <DummyContent />,
+  },
+];
