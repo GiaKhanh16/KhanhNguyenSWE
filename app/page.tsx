@@ -1,7 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion } from "motion/react";
-// import { backgroundStyles } from "./layout";
 import { BentoGrid, BentoGridItem } from "@/components/bento";
 import {
   IconArrowWaveRightUp,
@@ -17,50 +16,47 @@ import { WobbleCardDemo } from "@/components/Woble/demo";
 import Test from "./apple/page";
 import Applications from "@/components/Applications/apps";
 import About from "@/components/About/About";
+import Projects from "@/components/Project/projects";
+import Gallery from "@/components/Gallery/Gallery";
 
 const menuItems = [
   { id: "Applications", label: "Applications" },
-  { id: "Writing", label: "Writing" },
+  { id: "Projects", label: "Projects" },
+  { id: "Gallery", label: "Gallery" },
   { id: "About", label: "About" },
 ];
 
 const social = [
-  { icon: "githubblye.png", url: "" },
-  { icon: "linkedin.png", url: "" },
-  { icon: "mail.png", url: "" },
-  { icon: "cv.png", url: "" },
+  { icon: "githubblye.png", url: "https://github.com/GiaKhanh16" },
+  {
+    icon: "linkedin.png",
+    url: "https://www.linkedin.com/in/khanh-nguyen-8006a6359/",
+  },
+  { icon: "mail.png", url: "mailto:ngiakhanh18@gmail.com" },
+  {
+    icon: "cv.png",
+    url: "https://www.canva.com/design/DAGqBba4LAw/ckKM_II4hgDvmR4ZOUcYXQ/edit?utm_content=DAGqBba4LAw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
+  },
 ];
 
 export default function Home() {
   const [activeItem, setActiveItem] = useState("Applications");
 
-  // Function to render content based on active item
-  const renderContent = () => {
+  // Memoized renderContent to stabilize component output
+  const renderContent = useMemo(() => {
     switch (activeItem) {
       case "Applications":
         return <Applications />;
-      case "Writing":
-        return (
-          <BentoGrid className="max-w-4xl mx-auto md:grid borderd w-full pr-10">
-            {items.map((item, i) => (
-              <BentoGridItem
-                key={i}
-                title={item.title}
-                description={item.car_description}
-                modal_description={item.modal_description}
-                header={item.header}
-                icon={item.icon}
-                className={i === 3 || i === 6 ? "md:col-span-2" : ""}
-              />
-            ))}
-          </BentoGrid>
-        );
+      case "Projects":
+        return <Projects />;
       case "About":
         return <About />;
+      case "Gallery":
+        return <Gallery />;
       default:
-        return <WobbleCardDemo />;
+        return <Applications />;
     }
-  };
+  }, [activeItem]);
 
   return (
     <div
@@ -104,7 +100,7 @@ export default function Home() {
                     backgroundColor:
                       activeItem === item.id ? "#020617" : "#6b7280",
                   }}
-                  transition={{ duration: 0.1 }}
+                  transition={{ duration: 0.15 }}
                 />
 
                 <motion.span
@@ -113,7 +109,7 @@ export default function Home() {
                   animate={{
                     color: activeItem === item.id ? "#020617" : "#9ca3af",
                   }}
-                  transition={{ duration: 0.1 }}
+                  transition={{ duration: 0.15 }}
                 >
                   {item.label}
                 </motion.span>
@@ -138,91 +134,11 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.1 }}
         >
-          {renderContent()}
+          {renderContent}
         </motion.div>
       </div>
     </div>
   );
 }
-
-const Skeleton = () => (
-  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl overflow-hidden">
-    <img
-      src="./test4.png"
-      className="w-full h-full rounded-xl object-[center_35%] object-cover"
-    />
-  </div>
-);
-
-const DummyContent = () => {
-  return (
-    <>
-      {[...new Array(3).fill(1)].map((_, index) => {
-        return (
-          <div
-            key={"dummy-content" + index}
-            className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4"
-          >
-            <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-2xl font-sans max-w-3xl mx-auto">
-              <span className="font-bold text-neutral-700 dark:text-neutral-200">
-                The first rule of Apple club is that you boast about Apple club.
-              </span>{" "}
-              Keep a journal, quickly jot down a grocery list, and take amazing
-              class notes. Want to convert those notes to text? No problem.
-              Langotiya jeetu ka mara hua yaar is ready to capture every
-              thought.
-            </p>
-            <img
-              src="https://assets.aceternity.com/macbook.png"
-              alt="Macbook mockup from Aceternity UI"
-              height="500"
-              width="500"
-              className="md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain"
-            />
-          </div>
-        );
-      })}
-    </>
-  );
-};
-const items = [
-  {
-    title: "How I coded MyTennisApp",
-    car_description:
-      "Explore the birth of groundbreaking ideas and inventions.",
-    header: <Skeleton />,
-    icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
-    modal_description: <DummyContent />,
-  },
-  {
-    title: "TennisNumbers",
-    car_description: "Dive into the transformative power of technology.",
-    header: <Skeleton />,
-    icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
-    modal_description: <DummyContent />,
-  },
-  {
-    title: "SwiftUI vs React Native",
-    car_description: "Discover the beauty of thoughtful and functional design.",
-    header: <Skeleton />,
-    icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
-    modal_description: <DummyContent />,
-  },
-  {
-    title: "The Power of Communication",
-    car_description:
-      "Understand the impact of effective communication in our lives.",
-    header: <Skeleton />,
-    icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
-    modal_description: <DummyContent />,
-  },
-  {
-    title: "The Pursuit of Knowledge",
-    car_description: "Join the quest for understanding and enlightenment.",
-    header: <Skeleton />,
-    icon: <IconArrowWaveRightUp className="h-4 w-4 text-neutral-500" />,
-    modal_description: <DummyContent />,
-  },
-];

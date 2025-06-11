@@ -2,8 +2,6 @@
 
 import React from "react";
 import Image from "next/image";
-import CIcon from "@coreui/icons-react";
-import * as icon from "@coreui/icons";
 
 function Applications() {
   const apps = [
@@ -11,6 +9,10 @@ function Applications() {
       name: "MyTennisApp",
       icon: "/icon.png",
       smallIcon: ["/123.png", "/github.png"],
+      links: [
+        "https://apps.apple.com/us/app/mytennisapp/id6741842477?platform=iphone",
+        "https://github.com/GiaKhanh16/MyTennisApp",
+      ],
       features: [
         { text: "Match statistics & insights", icon: "📊" },
         { text: "Tournament scheduling", icon: "📅" },
@@ -23,21 +25,26 @@ function Applications() {
       name: "CourtSide",
       icon: "/goodtry.png",
       smallIcon: ["/123.png", "/github.png"],
+      links: ["https://courtside.com", "https://github.com/courtside"],
       features: [
-        { text: "Live match updates", icon: "⚽" },
-        { text: "Team management", icon: "👥" },
-        { text: "Training schedules", icon: "🏋️" },
-        { text: "Fan community", icon: "💬" },
+        { text: "Book tennis, pickleball, badmin courts", icon: "⚽" },
+        { text: "Imrpove club's management", icon: "👥" },
+        { text: "Improve member's satisfaction", icon: "🏋️" },
+        { text: "Clean, reliable and organize UXUI", icon: "💬" },
       ],
-      chips: ["NextJS", "ExpressJS", "Postgres"],
+      chips: ["SwiftUI", "NextJS", "ExpressJS", "Postgres"],
     },
     {
       name: "TennisNumbers",
       icon: "/day.png",
       smallIcon: ["/123.png", "/github.png"],
+      links: [
+        "https://apps.apple.com/us/app/tennisnumbers/id6743880644",
+        "https://github.com/GiaKhanh16/TennisNumbers",
+      ],
       features: [
-        { text: "Live match updates", icon: "⚽" },
-        { text: "Team management", icon: "👥" },
+        { text: "Live match updates and statistic", icon: "⚽" },
+        { text: "Provide performance metric", icon: "👥" },
         { text: "Training schedules", icon: "🏋️" },
         { text: "Fan community", icon: "💬" },
       ],
@@ -46,24 +53,28 @@ function Applications() {
   ];
 
   return (
-    <div className="flex flex-col  space-y-10">
+    <div className="flex flex-col space-y-10">
       {apps.map((app, index) => (
         <div key={index} className="flex flex-col">
-          <div className="flex flex-row gap-10 align-center">
-            <div className="font-medium text-gray-500 text-lg self-start text-start">
-              {app.name}
-            </div>
+          <div className="flex flex-row gap-10 items-center">
+            <div className="font-medium text-gray-500 text-lg">{app.name}</div>
             <div className="flex items-center justify-center gap-3">
-              {app.smallIcon.map((iconSrc, index) => (
-                <img
-                  key={index}
-                  src={iconSrc}
-                  width={20}
-                  height={20}
-                  alt={`${app.name} Small Icon ${index}`}
-                  className="transition-transform duration-300 hover:scale-125 object-contain cursor-pointer"
-                  style={{ display: "block" }}
-                />
+              {app.smallIcon.map((iconSrc, iconIndex) => (
+                <a
+                  key={iconIndex}
+                  href={app.links[iconIndex]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={iconSrc}
+                    width={20}
+                    height={20}
+                    alt={`${app.name} Small Icon ${iconIndex}`}
+                    className="transition-transform duration-300 hover:scale-125 object-contain cursor-pointer"
+                    style={{ display: "block" }}
+                  />
+                </a>
               ))}
             </div>
           </div>
@@ -83,7 +94,6 @@ function Applications() {
               ))}
             </ul>
           </div>
-          {/* <div className="mt-5">SwiftUi - React Native - Zustand</div> */}
           <div className="mt-5 flex flex-row gap-3">
             {app.chips.map((tech, techIndex) => (
               <span
@@ -100,9 +110,4 @@ function Applications() {
   );
 }
 
-export default Applications;
-{
-  /* <h2 className="text-xl font-semibold text-slate-700 mb-2">
-                Welcome to {app.name}
-              </h2> */
-}
+export default React.memo(Applications);
