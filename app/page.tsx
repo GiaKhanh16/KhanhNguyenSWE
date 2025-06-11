@@ -23,7 +23,7 @@ const social = [
   { icon: "/mail.png", url: "mailto:ngiakhanh18@gmail.com" },
   {
     icon: "/cv.png",
-    url: "https://www.canva.com/design/DAGqBba4LAw/ckKM_II4hgDvmR4ZOUcYXQ/edit?utm_content=DAGqBba4LAw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
+    url: "greenday.com",
   },
 ];
 
@@ -133,3 +133,5 @@ export default function Home() {
     </div>
   );
 }
+
+// url: "https://www.canva.com/design/DAGqBba4LAw/ckKM_II4hgDvmR4ZOUcYXQ/edit?utm_content=DAGqBba4LAw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
