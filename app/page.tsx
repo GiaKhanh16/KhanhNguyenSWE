@@ -23,7 +23,7 @@ const social = [
   { icon: "/mail.png", url: "mailto:ngiakhanh18@gmail.com" },
   {
     icon: "/cv.png",
-    url: "greenday.com",
+    url: "https://greenday.com/",
   },
 ];
 

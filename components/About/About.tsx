@@ -25,13 +25,11 @@ function About() {
         <h1 className="text-xl font-semibold">About Me 👨‍💻</h1>
         <div className="flex flex-col gap-3">
           <div className="text-slate-700 font-light">
-            I live in Houston, Tx but can re-locate. Studied Computer Science at
-            UMKC. I enjoy writing beautiful front end and beautiful backend. I
-            want to make the most beautiful-est UXUI and useful apps in the
-            world and fun and cool and unique and simple with great people. I
-            have been working in the tennis industry because I love tennis,
-            I&apos;ve wrote some apps for tennis, I enjoyed it and I want to
-            transition to full time software engineer.
+            I want to make a living writing code or playing around with techs in
+            general. I build apps with lots of emphasis on look, it's the most
+            important thing, look is. I love beautifuls stuff, also love A5
+            Wagu, my work is definitely A5 Wagu. Living in Houston but would
+            love to remote work
           </div>
         </div>
 
@@ -59,3 +57,10 @@ function About() {
 }
 
 export default About;
+// I live in Houston, Tx but can re-locate. Studied Computer Science at
+// UMKC. I enjoy writing beautiful front end and beautiful backend. I
+// want to make the most beautiful-est UXUI and useful apps in the
+// world and fun and cool and unique and simple with great people. I
+// have been working in the tennis industry because I love tennis,
+// I&apos;ve wrote some apps for tennis, I enjoyed it and I want to
+// transition to full time software engineer.
