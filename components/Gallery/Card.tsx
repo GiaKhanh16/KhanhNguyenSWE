@@ -81,7 +81,7 @@ export default function Component() {
   const imageUrls = [
     "/Gallery/mytennis.png",
     "/Gallery/tennisnumber.png",
-    "/Gallery/coding.jpg",
+    "/Gallery/courtside.png",
     "/Gallery/coding4.jpg",
     "/Gallery/m4.jpg",
     "/Gallery/me2.jpg",
