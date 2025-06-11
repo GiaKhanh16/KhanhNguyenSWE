@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image"; // Import Next.js Image component
 
 function Projects() {
   const projects = [
@@ -16,7 +17,6 @@ function Projects() {
         "An app that centralizes tournament and event hosting for gamers. The main goal is to build a platform that represents the profile and skills of a gamer and connects them to the world.",
       githuburl: "https://bearclawesports.co/bcg",
     },
-
     {
       title: "Fetch",
       tags: ["A custom image caching in SwiftUI"],
@@ -42,10 +42,10 @@ function Projects() {
       {projects.map((project, index) => (
         <div
           key={index}
-          className="flex flex-col gap-2 p-3 sm:p-4 rounded-lg  hover:shadow-sm transition-shadow duration-200 hover:bg-slate-100/20"
+          className="flex flex-col gap-2 p-3 sm:p-4 rounded-lg hover:shadow-sm transition-shadow duration-200 hover:bg-slate-100/20"
         >
-          <div className="flex flex-row items-center justify-between  gap-2">
-            <div className="flex flex-row items-center  gap-2">
+          <div className="flex flex-row items-center justify-between gap-2">
+            <div className="flex flex-row items-center gap-2">
               <h3 className="text-base sm:text-lg font-semibold text-gray-800">
                 {project.title}
               </h3>
@@ -61,14 +61,14 @@ function Projects() {
               </div>
             </div>
             <a
-              href={project.githuburl} // Replace with actual project GitHub link
+              href={project.githuburl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex-shrink-0"
             >
-              <img
+              <Image
                 src="/github.png"
-                alt="GitHub"
+                alt="GitHub icon"
                 width={18}
                 height={18}
                 className="sm:w-5 sm:h-5 transition-transform duration-300 hover:scale-110 object-contain"

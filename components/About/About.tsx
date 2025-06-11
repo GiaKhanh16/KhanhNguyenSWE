@@ -29,17 +29,17 @@ function About() {
             UMKC. I enjoy writing beautiful front end and beautiful backend. I
             want to make the most beautiful-est UXUI and useful apps in the
             world and fun and cool and unique and simple with great people. I
-            have been working in the tennis industry because I love tennis, I've
-            wrote some apps for tennis, I enjoyed it and I want to transition to
-            full time software engineer.
+            have been working in the tennis industry because I love tennis,
+            I&apos;ve wrote some apps for tennis, I enjoyed it and I want to
+            transition to full time software engineer.
           </div>
         </div>
 
         <h1 className="text-xl font-semibold">What Am I Building? ⌨️</h1>
         <div className="gap-3 flex flex-col">
           <div className="text-slate-700 font-light">
-            The world really do need a REALLY good software for tennis court
-            reservation and stuff so I'm doing that with a team.
+            The world really does need a REALLY good software for tennis court
+            reservation and stuff so I&apos;m doing that with a team.
           </div>
         </div>
         <h1 className="text-xl font-semibold">My Favorite Techologies:</h1>

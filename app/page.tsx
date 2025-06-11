@@ -1,23 +1,11 @@
 "use client";
 import { useState, useMemo } from "react";
 import { motion } from "motion/react";
-import { BentoGrid, BentoGridItem } from "@/components/bento";
-import {
-  IconArrowWaveRightUp,
-  IconBoxAlignRightFilled,
-  IconBoxAlignTopLeft,
-  IconClipboardCopy,
-  IconFileBroken,
-  IconSignature,
-  IconTableColumn,
-} from "@tabler/icons-react";
-import LayoutGridDemo from "@/components/Grid/layoutdemo";
-import { WobbleCardDemo } from "@/components/Woble/demo";
-import Test from "./apple/page";
 import Applications from "@/components/Applications/apps";
 import About from "@/components/About/About";
 import Projects from "@/components/Project/projects";
 import Gallery from "@/components/Gallery/Gallery";
+import Image from "next/image";
 
 const menuItems = [
   { id: "Applications", label: "Applications" },
@@ -119,11 +107,14 @@ export default function Home() {
         </div>
         <div className="mt-10 flex flex-row gap-5 cursor-pointer">
           {social.map((item, index) => (
-            <img
+            <Image
               key={index}
               src={item.icon}
-              className="w-[25px] transform transition-transform duration-300 ease-in-out hover:scale-125 hover:-translate-y-1"
-              onClick={() => window.open(item.url, "_blank")} // Opens URL in a new tab
+              alt={`water`}
+              width={25}
+              height={25}
+              className="transform transition-transform duration-300 ease-in-out hover:scale-125 hover:-translate-y-1"
+              onClick={() => window.open(item.url, "_blank")}
             />
           ))}
         </div>

@@ -66,7 +66,7 @@ function Applications() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img
+                  <Image
                     src={iconSrc}
                     width={20}
                     height={20}
