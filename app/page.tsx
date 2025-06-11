@@ -15,14 +15,14 @@ const menuItems = [
 ];
 
 const social = [
-  { icon: "githubblye.png", url: "https://github.com/GiaKhanh16" },
+  { icon: "/githubblye.png", url: "https://github.com/GiaKhanh16" },
   {
-    icon: "linkedin.png",
+    icon: "/linkedin.png",
     url: "https://www.linkedin.com/in/khanh-nguyen-8006a6359/",
   },
-  { icon: "mail.png", url: "mailto:ngiakhanh18@gmail.com" },
+  { icon: "/mail.png", url: "mailto:ngiakhanh18@gmail.com" },
   {
-    icon: "cv.png",
+    icon: "/cv.png",
     url: "https://www.canva.com/design/DAGqBba4LAw/ckKM_II4hgDvmR4ZOUcYXQ/edit?utm_content=DAGqBba4LAw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
   },
 ];
