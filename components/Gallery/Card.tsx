@@ -1,15 +1,20 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image"; // Import next/image
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const MAX_VISIBILITY = 3;
+
 const Card = ({ imageUrl }: { imageUrl: string }) => (
   <div className="w-full rounded-2xl overflow-hidden transition-all duration-300 ease-out shadow-lg">
-    <img
+    <Image
       src={imageUrl || "/placeholder.svg"}
       alt="Carousel image"
-      className="w-full transition-all duration-300 ease-out"
+      width={384} // Set a default width (adjust based on your design)
+      height={384} // Set a default height (adjust based on your design)
+      className="w-full h-full object-cover transition-all duration-300 ease-out"
+      priority={false} // Set to true for above-the-fold images
     />
   </div>
 );
@@ -48,11 +53,11 @@ const Carousel = ({ children }: { children: React.ReactNode }) => {
               opacity: Math.abs(active - i) >= MAX_VISIBILITY ? "0" : "1",
               display: Math.abs(active - i) > MAX_VISIBILITY ? "none" : "block",
               transform: `
-              rotateY(calc(var(--offset) * 50deg))
-              scaleY(calc(1 + var(--abs-offset) * -0.4))
-              translateZ(calc(var(--abs-offset) * -30rem))
-              translateX(calc(var(--direction) * -5rem))
-            `,
+                rotateY(calc(var(--offset) * 50deg))
+                scaleY(calc(1 + var(--abs-offset) * -0.4))
+                translateZ(calc(var(--abs-offset) * -30rem))
+                translateX(calc(var(--direction) * -5rem))
+              `,
               filter: "blur(calc(var(--abs-offset) * 1rem))",
             } as React.CSSProperties
           }
@@ -72,7 +77,6 @@ const Carousel = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-// const Image_URL = ["./Gallery/mytennis", "./Gallery/tennisnummber"];
 export default function Component() {
   const imageUrls = [
     "/Gallery/mytennis.png",
@@ -84,8 +88,7 @@ export default function Component() {
     "/Gallery/me3.jpg",
   ];
   return (
-    <div className="w-[950px]  flex overflow md:justify-center m-20 sm:m-0">
-      {/* make the width dynamic */}
+    <div className="w-full max-w-[950px] flex justify-center mx-auto px-4 sm:px-0 my-20 sm:my-0">
       <Carousel>
         {imageUrls.map((url, i) => (
           <Card key={i} imageUrl={url} />
