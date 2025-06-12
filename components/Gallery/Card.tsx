@@ -25,7 +25,7 @@ const Carousel = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div
-      className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96"
+      className="relative w-80 h-80 sm:w-80 sm:h-80 md:w-96 md:h-96"
       style={{
         perspective: "500px",
         transformStyle: "preserve-3d",
@@ -82,13 +82,13 @@ export default function Component() {
     "/Gallery/mytennis.png",
     "/Gallery/tennisnumber.png",
     "/Gallery/courtside.png",
-    "/Gallery/coding4.jpg",
+    "/Gallery/m6.jpeg",
     "/Gallery/m4.jpg",
     "/Gallery/me2.jpg",
     "/Gallery/me3.jpg",
   ];
   return (
-    <div className="w-full max-w-[950px] flex justify-center mx-auto px-4 sm:px-0 my-20 sm:my-0">
+    <div className="ml-15 w-full max-w-[950px] flex justify-center mx-auto px-4 sm:px-0 my-20 sm:my-0 pb-20 -translate-y-8 sm:translate-y-0">
       <Carousel>
         {imageUrls.map((url, i) => (
           <Card key={i} imageUrl={url} />

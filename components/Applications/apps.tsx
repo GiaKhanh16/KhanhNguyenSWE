@@ -28,7 +28,7 @@ function Applications() {
       links: ["https://courtside.com", "https://github.com/courtside"],
       features: [
         { text: "Book tennis, pickleball, badmin courts", icon: "⚽" },
-        { text: "Imrpove club's management", icon: "👥" },
+        { text: "Improve club's management", icon: "👥" },
         { text: "Improve member's satisfaction", icon: "🏋️" },
         { text: "Clean, reliable and organize UXUI", icon: "💬" },
       ],
@@ -53,7 +53,7 @@ function Applications() {
   ];
 
   return (
-    <div className="flex flex-col space-y-10">
+    <div className="flex flex-col space-y-10 pb-10">
       {apps.map((app, index) => (
         <div key={index} className="flex flex-col">
           <div className="flex flex-row gap-10 items-center">

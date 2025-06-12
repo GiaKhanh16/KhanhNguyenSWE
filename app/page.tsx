@@ -119,7 +119,7 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <div className="content ml-5 flex pl-3 mt-[9%] lg:flex-[60%] lg:w-full pb-10  ">
+      <div className="content ml-5 flex  mt-[9%] lg:flex-[60%] lg:w-full ">
         <motion.div
           key={activeItem}
           initial={{ opacity: 0, y: 20 }}
