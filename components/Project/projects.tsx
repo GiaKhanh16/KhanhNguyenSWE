@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image"; // Import Next.js Image component
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 function Projects() {
   const projects = [
@@ -37,7 +37,7 @@ function Projects() {
       githuburl: "https://github.com/GiaKhanh16/CourtBooker",
     },
   ];
-  const images = ["/123.png", "/123.png", "/123.png"];
+  // const images = ["/123.png", "/123.png", "/123.png"];
 
   return (
     <div className="flex flex-col gap-3 px-3 sm:px-4 w-full max-w-3xl mx-auto">
